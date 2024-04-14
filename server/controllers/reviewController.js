@@ -4,9 +4,9 @@ import User from "../models/User.js";
 // ROUTE 1: add reviews using POST '/addReview/:gameId'
 export const addReview=async(req,res)=>{
   try {
-      const {description, rating   }=req.body;
-      const{userId, userName} =req.user
-      const {gameId} = req.params
+      const { description, rating } = req.body;
+      const { userId, userName } = req.user;
+      const { gameId } = req.params;
  
       if(!description|| !rating || !userId || !userName || !gameId){
           return res.status(400).json({
@@ -37,7 +37,7 @@ export const addReview=async(req,res)=>{
 
 
       res.status(201).json({
-        msg:"game created successfully "
+        msg:"review added successfully "
       })
   } catch (error) {
     console.log(error);
@@ -49,7 +49,6 @@ export const addReview=async(req,res)=>{
 
 // ROUTE 2: show all reviews using GET '/showreviews/:gameId'
 export const showReviews = async (req, res) => {
-  console.log("h");
   try {
     const { gameId } = req.params;
 

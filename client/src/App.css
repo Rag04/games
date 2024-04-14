@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Bungee+Spice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Outline&family=Bungee+Spice&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-plp{
+  color:#20014F;
+}
+
 .App {
   text-align: center;
 }

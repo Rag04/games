@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import Navbar from './Navbar';
-import "./css/list.css"
+import hbg from '../../src/images/homebg2.svg'
 
 const List = () => {
   // State variable to store lists
@@ -25,14 +25,17 @@ const List = () => {
   return (
     <>
     <Navbar />
-    <div className="list-container">
-      <h2>All Lists</h2>
-      <div className="card-container">
+    <div className="bg-black bg-opacity-50 bg-cover bg-center min-h-screen flex flex-col justify-center items-start"  style={{
+      backgroundImage: `url(${hbg})`}}>
+    <div className="absolute font-body3 text-white text-3xl h-screen">
+      <h2 className='p-8'>All Lists</h2>
+      </div>
+      <div className="card-container pl-8 h-screen pt-24 font-body3 w-auto">
         {lists.map(list => (
-          <div key={list._id} className="card">
-<h3 className='d-flex justify-content-between'>{list.title}</h3>
+          <div key={list._id} className="card p-8 mb-4">
+            <h3 className='d-flex justify-content-between'>{list.title}</h3>
             <p>{list.description}</p>
-            <p><h3><span className="badge bg-secondary">{list.games.length} games</span></h3></p>
+            <p><h3><span className="badge bg-secondary p-2 mb-2">{list.games.length} games</span></h3></p>
 
 
             {/* Add Link to navigate to ListDetails component */}

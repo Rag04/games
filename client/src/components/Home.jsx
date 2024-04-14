@@ -3,7 +3,7 @@ import Card from './Card';
 import Search from './Search';
 import Navbar from './Navbar';
 import Filter from './Filter'; // Import the Filter component
-import "./css/home.css";
+import hbg from '../../src/images/homebg2.svg'
 
 const Home = () => {
   const [games, setGames] = useState([]);
@@ -80,26 +80,27 @@ const Home = () => {
   useEffect(() => {
     fetchGames();
   }, [fetchGames]); 
-
   return (
     <>
-    <div className="overlay-image"></div>
-    <div className="overlay-image2"></div>
       <Navbar />
-      <div className="container">
-        <h2>GAMES CATALOGUE</h2>
-        <div className="row">
-          <div className="col-3 my-2">
-            <Search onSearch={handleSearch} />
-            <Filter filterOptions={filterOptions} onFilterChange={handleFilterChange} /> {/* Include the Filter component */}
+      <div className="bg-black bg-opacity-50 bg-cover bg-center min-h-screen flex flex-col justify-center items-center" style={{
+            backgroundImage: `url(${hbg})`}}>
+        <div className="pt-8">
+          <Search onSearch={handleSearch} />
+        </div>
+        <div className="flex flex-row justify-start w-full drop-shadow-[0px_4px_6px_rgba(0,0,0,0.5)]">
+          <div className="mt-2 mr-2 py-12 pl-7">
+            <Filter filterOptions={filterOptions} onFilterChange={handleFilterChange} />
           </div>
-          <div className="col-9 my-2">
+          <div className="my-2 flex-grow">
             <Card games={filteredGames} />
           </div>
         </div>
       </div>
     </>
   );
+  
+  
 };
 
 export default Home;

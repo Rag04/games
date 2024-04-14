@@ -46,7 +46,7 @@ const Listinfo = () => {
 
   return (
     <div className="container">
-      <h2>List Details</h2>
+      <h2>LIST DETAILS</h2>
       <h3>{list.title}</h3>
       <p>{list.description}</p>
 

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import "./css/cardinfo.css";
 import Review from './Review';
+import hbg from '../../src/images/homebg2.svg'
+import Navbar from './Navbar';
 
 const Cardinfo = () => {
   const { id } = useParams();
@@ -25,32 +26,45 @@ const Cardinfo = () => {
   }, [id]);
 
   return (
-    <div className="cardinfo-container">
+    <>
+    <Navbar />
+    <div className="bg-black bg-opacity-50 bg-cover bg-center min-h-screen flex flex-col justify-center items-center"  style={{
+      backgroundImage: `url(${hbg})`}}>
       {gameDetails ? (
-        <div className="game-details ">
-          <h2 className='text-center' style={{ fontSize: '60px' }}>{gameDetails.name}</h2>
-          <img src={gameDetails.background_image} alt={gameDetails.name} />
-          <p>Release Year: {new Date(gameDetails.released).getFullYear()}</p>
-          <p>Playtime: {gameDetails.playtime} hours</p>
-          <p>Platforms: {gameDetails.platforms.join(', ')}</p>
-          <p>Rating: {gameDetails.rating}</p>
-          <p>Metacritic Score: {gameDetails.metacritic}</p>
-          <p>Genres: {gameDetails.genres.join(', ')}</p>
-          <p>Developers: {gameDetails.developers.join(', ')}</p>
-          <p className='text-center' style={{ fontSize: '35px' }}>SCREENSHOTS</p>
-          <div className="screenshots">
-            {gameDetails.short_screenshots.map((screenshot, index) => (
-              <img key={index} src={screenshot} alt={`Screenshot ${index + 1}`} />
-            ))}
+        <div className='relatiev'>
+        <div className="game-details flex flex-wrap justify-center items-start">
+          <h2 className='text-start p-10 font-body3 text-white' style={{ fontSize: '60px' }}>{gameDetails.name}</h2>
           </div>
-        </div>
+          <div className="game-details flex flex-wrap justify-center items-start">
+  <div className='relative px-10'>
+    <img src={gameDetails.background_image} alt={gameDetails.name} className='h-80 w-auto mb-8 mx-auto rounded-2xl drop-shadow-[0px_4px_6px_rgba(0,0,0,0.5)]' />
+  </div>
+  <div className='font-body3 text-white text-lg bg-white bg-opacity-50 p-3 rounded-2xl w-96'>
+    <p className='pb-1 sm:ml-2'>Release Year: {new Date(gameDetails.released).getFullYear()}</p>
+    <p className='pb-1 sm:ml-2'>Playtime: {gameDetails.playtime} hours</p>
+    <p className='pb-1 sm:ml-2'>Platforms: {gameDetails.platforms.join(', ')}</p>
+    <p className='pb-1 sm:ml-2'>Rating: {gameDetails.rating}</p>
+    <p className='pb-1 sm:ml-2'>Metacritic Score: {gameDetails.metacritic}</p>
+    <p className='pb-1 sm:ml-2'>Genres: {gameDetails.genres.join(', ')}</p>
+    <p className='pb-1 sm:ml-2'>Developers: {gameDetails.developers.join(', ')}</p>
+  </div>
+</div>
+          <div className='text-center font-body3 text-white text-6xl pt-4' style={{ fontSize: '35px' }}>SCREENSHOTS
+          <div className="relative flex items-center pt-12">
+          <div id='slider' className='w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth'>
+            {gameDetails.short_screenshots.map((screenshot, index) => (
+              <img key={index} src={screenshot} alt={`Screenshot ${index + 1}`} className='inline-block h-60 w-auto mx-auto p-2 rounded-2xl drop-shadow-[0px_4px_6px_rgba(0,0,0,0.5)] hover:scale-95 transition duration-150 ease-in-out'/>
+            ))}
+            </div>
+          </div>
+          </div>
+          </div>
       ) : (
         <p>Loading...</p>
       )}
-
     <Review gameId={id} />
-
     </div>
+    </>
   );
 };
 
